@@ -25,7 +25,7 @@ SOLVED: /wiki/crocodile -> /wiki/sausage -> /wiki/potato_salad -> /wiki/salad (3
 
 ## Algorithm
 This algorithm is a essentially breadth first search. However when visiting a page only the 4 most relevant pages are 
-added to the queue. The cosine distance between two [GloVe](https://en.wikipedia.org/wiki/GloVe_(machine_learning) word embeddings 
+added to the queue. The cosine distance between two [GloVe]( https://en.wikipedia.org/wiki/GloVe_\(machine_learning\)) word embeddings 
 (one for link that could be explored and the target link)
 is used to calculate how relevant a page is. The lower the cosine distance the more relevant the page is.
 
