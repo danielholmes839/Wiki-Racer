@@ -1,3 +1,4 @@
+import time
 import joblib
 import requests
 import numpy as np
@@ -101,6 +102,9 @@ class Solver:
 
     def solve(self) -> Page:
         """ Finds the target page """
+        print(f'SOLVING: {self.start_href} -> {self.target_href}')
+        start = time.time()
+
         explored = 0
         while explored < self.explore_limit:
             # Explore the next page
@@ -108,13 +112,16 @@ class Solver:
             if page.href in self.explored:
                 continue
 
-            print('exploring', page.href)
+            print(f'distance: {round(page.distance, 3)}, exploring: {page.href}', )
             page.explore(self.target_vector)
             self.explored.add(page.href)
 
             # Check for the target page
             if page.has_solution(self.target_href):
-                return page.get(self.target_href)
+                page = page.get(self.target_href)
+                end = time.time()
+                print(f'SOLVED: {Solver.path(page)} ({round(end - start, 1)} seconds)')
+                return page
 
             # Add the 4 most relevant branches
             self.queue += page.branches[:4]
@@ -134,4 +141,3 @@ class Solver:
 
 solver = Solver('/wiki/crocodile', '/wiki/salad')
 target = solver.solve()
-print(solver.path(target))
