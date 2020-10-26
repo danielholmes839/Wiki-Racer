@@ -1,7 +1,7 @@
 # Wiki Racer
 
 [Wiki Racing](https://en.wikipedia.org/wiki/Wikiracing) 
-is game where people compete to see how fast they can navigate between two randomly selected
+is a game where people compete to see how fast they can navigate between two randomly selected
 Wikipedia pages by only clicking links in the articles. Wiki Racer uses natural language processing to search the most relevant pages first.
 
 ## Example 
